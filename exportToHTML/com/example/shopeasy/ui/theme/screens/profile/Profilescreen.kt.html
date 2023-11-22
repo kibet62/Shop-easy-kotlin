@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>Profilescreen.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Profilescreen.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.shopeasy.ui.theme.screens.profile</span>
+
+<span class="s1">import android.net.Uri</span>
+<span class="s1">import android.text.style.BackgroundColorSpan</span>
+<span class="s1">import android.widget.Toast</span>
+<span class="s1">import androidx.activity.compose.rememberLauncherForActivityResult</span>
+<span class="s1">import androidx.activity.result.contract.ActivityResultContracts</span>
+<span class="s1">import androidx.compose.foundation.Image</span>
+<span class="s1">import androidx.compose.foundation.clickable</span>
+<span class="s1">import androidx.compose.foundation.layout.Arrangement</span>
+<span class="s1">import androidx.compose.foundation.layout.Column</span>
+<span class="s1">import androidx.compose.foundation.layout.Row</span>
+<span class="s1">import androidx.compose.foundation.layout.fillMaxWidth</span>
+<span class="s1">import androidx.compose.foundation.layout.padding</span>
+<span class="s1">import androidx.compose.foundation.layout.size</span>
+<span class="s1">import androidx.compose.foundation.layout.width</span>
+<span class="s1">import androidx.compose.foundation.layout.wrapContentSize</span>
+<span class="s1">import androidx.compose.foundation.rememberScrollState</span>
+<span class="s1">import androidx.compose.foundation.shape.CircleShape</span>
+<span class="s1">import androidx.compose.foundation.verticalScroll</span>
+<span class="s1">import androidx.compose.material3.Card</span>
+<span class="s1">import androidx.compose.material3.ExperimentalMaterial3Api</span>
+<span class="s1">import androidx.compose.material3.Text</span>
+<span class="s1">import androidx.compose.material3.TextField</span>
+<span class="s1">import androidx.compose.material3.TextFieldDefaults</span>
+<span class="s1">import androidx.compose.runtime.Composable</span>
+<span class="s1">import androidx.compose.runtime.getValue</span>
+<span class="s1">import androidx.compose.runtime.mutableStateOf</span>
+<span class="s1">import androidx.compose.runtime.saveable.rememberSaveable</span>
+<span class="s1">import androidx.compose.runtime.setValue</span>
+<span class="s1">import androidx.compose.ui.Alignment</span>
+<span class="s1">import androidx.compose.ui.Modifier</span>
+<span class="s1">import androidx.compose.ui.graphics.Color</span>
+<span class="s1">import androidx.compose.ui.layout.ContentScale</span>
+<span class="s1">import androidx.compose.ui.platform.LocalContext</span>
+<span class="s1">import androidx.compose.ui.tooling.preview.Preview</span>
+<span class="s1">import androidx.compose.ui.unit.dp</span>
+<span class="s1">import androidx.navigation.compose.rememberNavController</span>
+<span class="s1">import coil.compose.rememberImagePainter</span>
+<span class="s1">import com.example.shopeasy.R</span>
+
+
+<span class="s1">@OptIn(ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s1">)</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">&lt;NavHostController&gt; Profilescreen(navController: NavHostController) {</span>
+
+    <span class="s0">val </span><span class="s1">notification = rememberSaveable { mutableStateOf(</span><span class="s2">&quot;&quot;</span><span class="s1">) }</span>
+    <span class="s0">if </span><span class="s1">(notification.value.isNotEmpty()) {</span>
+        <span class="s1">Toast.makeText(LocalContext.current</span><span class="s0">, </span><span class="s1">notification.value</span><span class="s0">, </span><span class="s1">Toast.LENGTH_LONG).show()</span>
+        <span class="s1">notification.value = </span><span class="s2">&quot;&quot;</span>
+    <span class="s1">}</span>
+
+    <span class="s0">var </span><span class="s1">name by rememberSaveable { mutableStateOf(</span><span class="s2">&quot;default name&quot;</span><span class="s1">) }</span>
+    <span class="s0">var </span><span class="s1">usernane by rememberSaveable { mutableStateOf(</span><span class="s2">&quot;default username&quot;</span><span class="s1">) }</span>
+
+    <span class="s0">val </span><span class="s1">imageuri = rememberSaveable { mutableStateOf(</span><span class="s2">&quot;&quot;</span><span class="s1">) }</span>
+    <span class="s0">val </span><span class="s1">painter = rememberImagePainter(</span>
+        <span class="s0">if </span><span class="s1">(imageuri.value.isEmpty())</span>
+            <span class="s1">R.drawable.baseline_person_outline_24</span>
+        <span class="s0">else</span>
+            <span class="s1">imageuri.value</span>
+
+    <span class="s1">)</span>
+
+    <span class="s0">val </span><span class="s1">launcher = rememberLauncherForActivityResult(</span>
+        <span class="s1">contract = ActivityResultContracts.GetContent()</span>
+    <span class="s1">){</span>
+            <span class="s1">uri: Uri? -&gt;</span>
+        <span class="s1">uri?.let { imageuri.value = it.toString() }</span>
+    <span class="s1">}</span>
+
+
+    <span class="s1">Column(modifier = Modifier</span>
+        <span class="s1">.verticalScroll(rememberScrollState())</span>
+        <span class="s1">.padding(</span><span class="s3">10</span><span class="s1">.dp)) {</span>
+
+
+        <span class="s1">Row(modifier = Modifier</span>
+            <span class="s1">.fillMaxWidth()</span>
+            <span class="s1">.padding(</span><span class="s3">10</span><span class="s1">.dp)</span><span class="s0">,</span>
+            <span class="s1">horizontalArrangement = Arrangement.SpaceBetween) {</span>
+            <span class="s1">Text(</span>
+                <span class="s1">text = </span><span class="s2">&quot;Cancelled&quot;</span><span class="s0">,</span>
+                <span class="s1">modifier = Modifier</span>
+                    <span class="s1">.clickable { notification.value = </span><span class="s2">&quot;Cancel&quot; </span><span class="s1">})</span>
+            <span class="s1">Text(text = </span><span class="s2">&quot;Save&quot;</span><span class="s0">,</span>
+                <span class="s1">modifier = Modifier</span>
+                    <span class="s1">.clickable { notification.value = </span><span class="s2">&quot;profile updated&quot; </span><span class="s1">})</span>
+
+        <span class="s1">}</span>
+
+
+    <span class="s1">Column(</span>
+        <span class="s1">modifier = Modifier</span>
+            <span class="s1">.padding(</span><span class="s3">10</span><span class="s1">.dp)</span>
+            <span class="s1">.fillMaxWidth()</span><span class="s0">,</span>
+        <span class="s1">horizontalAlignment = Alignment.CenterHorizontally</span>
+    <span class="s1">) {</span>
+        <span class="s1">Card(</span>
+            <span class="s1">shape = CircleShape</span><span class="s0">,</span>
+            <span class="s1">modifier = Modifier</span>
+                <span class="s1">.padding(</span><span class="s3">10</span><span class="s1">.dp)</span>
+                <span class="s1">.size(</span><span class="s3">100</span><span class="s1">.dp)</span>
+        <span class="s1">) {</span>
+            <span class="s1">Image(</span>
+                <span class="s1">painter = painter</span><span class="s0">,</span>
+                <span class="s1">contentDescription = </span><span class="s0">null,</span>
+                <span class="s1">modifier = Modifier</span>
+                    <span class="s1">.wrapContentSize()</span>
+                    <span class="s1">.clickable { launcher.launch(</span><span class="s2">&quot;image/^*&quot;</span><span class="s1">) }</span><span class="s0">,</span>
+                <span class="s1">contentScale = ContentScale.Crop</span>
+            <span class="s1">)</span>
+
+        <span class="s1">}</span>
+        <span class="s1">Text(text = </span><span class="s2">&quot;Change profile photo&quot;</span><span class="s1">)</span>
+
+    <span class="s1">}</span>
+        <span class="s1">Row(modifier = Modifier</span>
+            <span class="s1">.fillMaxWidth()</span>
+            <span class="s1">.padding(start = </span><span class="s3">5</span><span class="s1">.dp</span><span class="s0">, </span><span class="s1">end = </span><span class="s3">5</span><span class="s1">.dp)</span><span class="s0">,</span>
+            <span class="s1">verticalAlignment = Alignment.CenterVertically) {</span>
+
+            <span class="s1">Text(text = </span><span class="s2">&quot;name&quot;</span><span class="s0">, </span><span class="s1">modifier = Modifier.width(</span><span class="s3">100</span><span class="s1">.dp))</span>
+            <span class="s1">TextField(value = name</span><span class="s0">,</span>
+                <span class="s1">onValueChange = { name= it}</span><span class="s0">,</span>
+                <span class="s1">colors = TextFieldDefaults.textFieldColors(</span>
+                    <span class="s1">textColor = Color.Black)</span>
+            <span class="s1">)</span>
+
+        <span class="s1">}</span>
+        <span class="s1">Row(modifier = Modifier</span>
+            <span class="s1">.fillMaxWidth()</span>
+            <span class="s1">.padding(start = </span><span class="s3">5</span><span class="s1">.dp</span><span class="s0">, </span><span class="s1">end = </span><span class="s3">5</span><span class="s1">.dp)</span><span class="s0">,</span>
+            <span class="s1">verticalAlignment = Alignment.CenterVertically) {</span>
+
+            <span class="s1">Text(text = </span><span class="s2">&quot;username&quot;</span><span class="s0">, </span><span class="s1">modifier = Modifier.width(</span><span class="s3">100</span><span class="s1">.dp))</span>
+            <span class="s1">TextField(value = usernane</span><span class="s0">,</span>
+                <span class="s1">onValueChange = { usernane= it}</span><span class="s0">,</span>
+                <span class="s1">colors = TextFieldDefaults.textFieldColors(</span>
+                    <span class="s1">textColor = Color.Black)</span>
+            <span class="s1">)</span>
+
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+
+
+<span class="s1">@Preview</span>
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">Profilescreenprevie() {</span>
+    <span class="s1">Profilescreen(rememberNavController())</span>
+
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>

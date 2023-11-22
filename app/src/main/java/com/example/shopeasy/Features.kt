@@ -1,0 +1,15 @@
+package com.example.shopeasy
+
+import android.icu.text.CaseMap.Title
+import androidx.annotation.DrawableRes
+import androidx.compose.ui.graphics.Color
+
+
+data class Features(
+    val title: String,
+    @DrawableRes val iconId: Int,
+    val lightColor: Color,
+    val mediumColor: Color,
+    val darkColor: Color,
+
+    )
