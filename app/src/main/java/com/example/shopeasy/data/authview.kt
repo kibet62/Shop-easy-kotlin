@@ -3,6 +3,7 @@ package com.example.shopeasy.data
 import android.app.ProgressDialog
 import android.content.Context
 import android.widget.Toast
+import androidx.navigation.NavHostController
 import com.example.shopeasy.Navigation.ROUTE_HOME
 import com.example.shopeasy.Navigation.ROUTE_LOGIN
 import com.example.shopeasy.Navigation.ROUTE_REGISTER
@@ -10,7 +11,7 @@ import com.example.shopeasy.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
-class AuthViewModel<NavHostController>(var navController:NavHostController, var context: Context){
+class AuthViewModel(var navController: NavHostController, var context: Context){
 
     var mAuth: FirebaseAuth
     val progress: ProgressDialog

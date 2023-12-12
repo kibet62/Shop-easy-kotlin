@@ -18,12 +18,15 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 @Composable
-fun health() {
+fun health(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/health-beauty/"
     val uri2 = "https://jiji.co.ke/search?query=health%20and%20beauty"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.product_home_newuser.home_new_user"
@@ -48,4 +51,10 @@ fun health() {
         Icon(painter = painterResource(id = R.drawable.kilimall), contentDescription = "jumia",modifier = Modifier.clickable { Uri.parse(uri5) })
 
     }
+}
+
+@Preview
+@Composable
+fun healthprev() {
+    health(rememberNavController())
 }

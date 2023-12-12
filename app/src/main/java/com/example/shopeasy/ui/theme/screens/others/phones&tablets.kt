@@ -18,12 +18,15 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 @Composable
-fun phones() {
+fun phones(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/phones-tablets/?q=sporting#catalog-listing"
     val uri2 = "https://jiji.co.ke/search?query=phones%20and%20tablet"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.galleryofferlist.pageModule_fy23_pc_search_bar.keydown__Enter&tab=all&searchText=phone%26tablets"
@@ -49,4 +52,10 @@ fun phones() {
 
     }
 
+}
+
+@Preview
+@Composable
+fun phonesprev() {
+    phones(rememberNavController())
 }

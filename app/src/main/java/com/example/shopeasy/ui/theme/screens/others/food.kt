@@ -12,11 +12,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 @Composable
-fun food() {
+fun food(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/catalog/?q=food"
     val uri2 = "https://jiji.co.ke/search?query=food"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.galleryofferlist.pageModule_fy23_pc_search_bar.keydown__Enter&tab=all&searchText=food"
@@ -42,4 +45,10 @@ fun food() {
         Icon(painter = painterResource(id = R.drawable.kilimall), contentDescription = "kilimall",modifier = Modifier.clickable { Uri.parse(uri5) })
 
     }
+}
+
+@Preview
+@Composable
+fun foodprev() {
+    food(rememberNavController())
 }

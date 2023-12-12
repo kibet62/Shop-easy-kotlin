@@ -1,5 +1,6 @@
 package com.example.shopeasy.ui.theme.screens.Register
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -29,7 +31,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.shopeasy.Navigation.ROUTE_HOME
 import com.example.shopeasy.Navigation.ROUTE_LOGIN
+import com.example.shopeasy.R
 import com.example.shopeasy.data.AuthViewModel
 
 
@@ -43,6 +47,7 @@ fun  RegisterScreen(navController: NavHostController) {
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.Blue),
+
         horizontalAlignment = Alignment.CenterHorizontally) {
 
         Text(text = "Register here",
@@ -103,6 +108,15 @@ fun  RegisterScreen(navController: NavHostController) {
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Have an Account? Click to Login")
         }
+        Spacer(modifier = Modifier.height(20.dp))
+
+        Button(onClick = {
+            navController.navigate(ROUTE_HOME)
+        }, modifier = Modifier.fillMaxWidth()) {
+            Text(text = "Home")
+        }
+
+
 
     }
 

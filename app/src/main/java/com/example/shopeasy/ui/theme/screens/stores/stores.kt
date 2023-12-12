@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -15,13 +16,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.shopeasy.R
 
 
 @Composable
@@ -39,27 +43,33 @@ fun  ElevatedBox(navController: NavHostController) {
 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
-        Row(modifier = Modifier.clickable {  }) {
-
-            BoxWithName(name = "JUMIA", color = Color.Yellow,parse  = Uri.parse(uri1))
-            BoxWithName(name = "GLOVO", color = Color.White,parse = Uri.parse(""))
-        }
         Row {
-            BoxWithName(name = "JIJI", color = Color.Green,parse = Uri.parse(uri2))
-            BoxWithName(name = "ALIBABA", color = Color.Magenta,parse = Uri.parse(uri3))
+            BoxWithName(Icon = painterResource(id = R.drawable.jumia), name ="jumia" , uri =Uri.parse(uri1) )
+            BoxWithName(Icon = painterResource(id = R.drawable.jiji), name ="jiji" , uri =Uri.parse(uri2) )
+
 
         }
         Row {
-            BoxWithName(name = "ALIEXPRESS", color = Color.Red,parse = Uri.parse(uri4))
-            BoxWithName(name = "KILIMALL", color = Color.Blue,parse = Uri.parse(uri5))
+            BoxWithName(Icon = painterResource(id = R.drawable.glovo), name ="glovo" , uri =Uri.parse("") )
+            BoxWithName(Icon = painterResource(id = R.drawable.alibaba), name ="alibaba" , uri =Uri.parse(uri5) )
+
+
         }
+        Row {
+            BoxWithName(Icon = painterResource(id = R.drawable.kilmall), name ="kilmall" , uri =Uri.parse(uri3) )
+            BoxWithName(Icon = painterResource(id = R.drawable.aliexpress), name ="aliexpress" , uri =Uri.parse(uri4) )
+
+
+        }
+
+
+
 
     }
 }
 
 @Composable
-fun BoxWithName(name: String, color: Color, parse: Uri) {
+fun BoxWithName(Icon: Painter, name: String, uri: Uri) {
 
     val uri1 = "https://www.jumia.co.ke/automobile/"
     val uri2 = "https://jiji.co.ke/home-garden?query=automobile"
@@ -70,11 +80,13 @@ fun BoxWithName(name: String, color: Color, parse: Uri) {
     Surface(
         modifier = Modifier
             .padding(8.dp)
+            .size(width = 60.dp, height = 40.dp)
             .shadow(elevation = 4.dp, shape = RoundedCornerShape(8.dp))
             .clickable {},
 
 
-        color = color,
+
+
         shape = RoundedCornerShape(8.dp)
     ) {
         Column(

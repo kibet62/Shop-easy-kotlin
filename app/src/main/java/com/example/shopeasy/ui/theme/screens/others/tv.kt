@@ -19,11 +19,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 
 @Composable
-fun tv() {
+fun tv(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/home-audio-electronics/"
     val uri2 = "https://jiji.co.ke/home-garden?query=automobile"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.product_home_newuser.home_new_user_first_screen_fy23_pc_search_bar.associationItem_pos_0&tab=all&searchText=automobile"
@@ -45,22 +47,22 @@ fun tv() {
             modifier = Modifier.weight(1f)) // Fill this with remaining space available
         Icon(painter = painterResource(id = R.drawable.kilimall), contentDescription = "jumia",modifier = Modifier.clickable { Uri.parse(uri5) })
 
-    }
-    Row {
+
+
         Icon(painter = painterResource(id = R.drawable.alibaba), contentDescription = "jumia",modifier = Modifier.clickable { Uri.parse(uri3) })
         Text("TV PRODUCTS", textAlign = TextAlign.Center,
             modifier = Modifier.weight(1f), color = Color.Red,) // Fill this with remaining space available
         Icon(painter = painterResource(id = R.drawable.glovo), contentDescription = "jumia",modifier = Modifier.clickable { Uri.parse("") })
 
 
-
     }
+
 
 }
 
 @Preview
 @Composable
 fun tvprev() {
-    tv()
+    tv(rememberNavController())
 }
 

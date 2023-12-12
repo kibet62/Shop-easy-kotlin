@@ -46,6 +46,7 @@ fun  LoginScreen(navController: NavHostController) {
         .background(Color.Blue),
         horizontalAlignment = Alignment.CenterHorizontally) {
 
+
         Text(text = "Login here",
             color = Color.Cyan,
             fontFamily = FontFamily.Cursive,
@@ -85,6 +86,8 @@ fun  LoginScreen(navController: NavHostController) {
             .clickable { }) {
             Text(text = "Don't have account? Click to Register")
         }
+        Spacer(modifier = Modifier.height(20.dp))
+
         Button(onClick = { navController.navigate(ROUTE_HOME) }, modifier = Modifier
             .fillMaxWidth()
             .clickable { }) {

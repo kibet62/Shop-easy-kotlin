@@ -1,8 +1,24 @@
 package com.example.shopeasy.ui.theme.screens.search
 
-import android.app.DownloadManager.Query
+import androidx.compose.foundation.clickable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.shopeasy.Navigation.ROUTE_AUDIO
+import com.example.shopeasy.Navigation.ROUTE_AUTOMOBILE
+import com.example.shopeasy.Navigation.ROUTE_BOOKS
+import com.example.shopeasy.Navigation.ROUTE_COMPUTING
+import com.example.shopeasy.Navigation.ROUTE_FASHION
+import com.example.shopeasy.Navigation.ROUTE_FOOD
+import com.example.shopeasy.Navigation.ROUTE_GAMING
+import com.example.shopeasy.Navigation.ROUTE_GARDENING
+import com.example.shopeasy.Navigation.ROUTE_HEALTH
+import com.example.shopeasy.Navigation.ROUTE_KITCHEN
+import com.example.shopeasy.Navigation.ROUTE_OFFICE
+import com.example.shopeasy.Navigation.ROUTE_PHONES
+import com.example.shopeasy.Navigation.ROUTE_SPORTING
+import com.example.shopeasy.Navigation.ROUTE_SUPERMARKET
+import com.example.shopeasy.Navigation.ROUTE_TV
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -51,7 +67,8 @@ class Mainviewmodel:ViewModel() {
     }
 }
 data class items(
-    val itemname:String
+    val itemname: String,
+    val function: () -> Modifier
 ){
     fun doesMatchsearchQuery(query: String):Boolean{
         val matchingCombinations = listOf(
@@ -68,52 +85,49 @@ data class items(
 private val allitems = listOf(
     items(
         itemname = "tv"
-    ),
+    ){ Modifier.clickable { ROUTE_TV }},
     items(
         itemname = "Audio"
-    ),
+    ) { Modifier.clickable { ROUTE_AUDIO } },
     items(
         itemname = "sporting"
-    ),
+    ) { Modifier.clickable { ROUTE_SPORTING } },
     items(
         itemname = "computing"
-    ),
+    ) { Modifier.clickable { ROUTE_COMPUTING } },
     items(
         itemname = "phones&tablets"
-    ),
+    ) { Modifier.clickable { ROUTE_PHONES }},
     items(
         itemname = "supermarket"
-    ),
+    ) { Modifier.clickable { ROUTE_SUPERMARKET } },
     items(
         itemname = "health&beauty"
-    ),
+    ) { Modifier.clickable { ROUTE_HEALTH }},
     items(
         itemname = "Home&office"
-    ),
+    ) { Modifier.clickable { ROUTE_OFFICE } },
     items(
         itemname = "Automible"
-    ),
+    ) { Modifier.clickable { ROUTE_AUTOMOBILE } },
     items(
-        itemname = "fasion"
-    ),
+        itemname = "fashion"
+    ) { Modifier.clickable { ROUTE_FASHION } },
     items(
         itemname = "kitchen appliance"
-    ),
+    ) { Modifier.clickable { ROUTE_KITCHEN } },
     items(
         itemname = "Gaming"
-    ),
-    items(
-        itemname = "Babyproducts"
-    ),
+    ) {Modifier.clickable { ROUTE_GAMING } },
     items(
         itemname = "Books"
-    ),
+    ) { Modifier.clickable { ROUTE_BOOKS } },
     items(
         itemname = "Gardening"
-    ),
+    ) { Modifier.clickable { ROUTE_GARDENING }},
     items(
         itemname = "food"
-    ),
+    ) { Modifier.clickable { ROUTE_FOOD } }
 
 
 )

@@ -14,11 +14,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 
 @Composable
-fun Automobile() {
+fun Automobile(navController: NavHostController) {
 
     val uri1 = "https://www.jumia.co.ke/automobile/"
     val uri2 = "https://jiji.co.ke/home-garden?query=automobile"
@@ -52,5 +54,5 @@ fun Automobile() {
 @Preview
 @Composable
 fun Automobileprev() {
-    Automobile()
+    Automobile(rememberNavController())
 }

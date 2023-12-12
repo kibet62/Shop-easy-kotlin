@@ -16,9 +16,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun audio() {
+fun audio(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/home-audio-electronics/"
     val uri2 = "https://jiji.co.ke/search?query=audio"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.galleryofferlist.pageModule_fy23_pc_search_bar.keydown__Enter&tab=all&searchText=audio"
@@ -76,5 +78,5 @@ fun BoxWithName(name: String, color: Color, parse: Uri) {
 @Preview
 @Composable
 fun audioprev() {
-    audio()
+    audio(rememberNavController())
 }

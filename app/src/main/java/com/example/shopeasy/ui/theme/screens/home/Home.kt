@@ -89,11 +89,11 @@ fun  homescreen(navController: NavHostController) {
                 .padding(10.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Button(onClick = { ROUTE_REGISTER }, modifier = Modifier.clickable {}) {
+            Button(onClick = { navController.navigate(ROUTE_REGISTER) }, modifier = Modifier.clickable {}) {
                 Text(text = "Register")
 
             }
-            Button(onClick = { ROUTE_LOGIN }, modifier = Modifier.clickable {}) {
+            Button(onClick = { navController.navigate(ROUTE_LOGIN) }, modifier = Modifier.clickable {}) {
                 Text(text = "Sign in")
 
             }
@@ -120,25 +120,26 @@ fun  homescreen(navController: NavHostController) {
                 bottomBar = {
                     BottomAppBar(
                         actions = {
-                            IconButton(onClick = { /* do something */ ROUTE_HOME }) {
+                            IconButton(onClick = { /* do something */ navController.navigate(
+                                ROUTE_HOME) }) {
                                 Icon(
                                     Icons.Filled.Home,
                                     contentDescription = "Localized description"
                                 )
                             }
-                            IconButton(onClick = { /* do something */ ROUTE_SEARCH }) {
+                            IconButton(onClick = { /* do something */navController.navigate(ROUTE_SEARCH)  }) {
                                 Icon(
                                     Icons.Filled.Search,
                                     contentDescription = "Localized description",
                                 )
                             }
-                            IconButton(onClick = { /* do something */ ROUTE_STORES }) {
+                            IconButton(onClick = { /* do something */navController.navigate(ROUTE_STORES)  }) {
                                 Icon(
                                     Icons.Filled.List,
                                     contentDescription = "Localized description",
                                 )
                             }
-                            IconButton(onClick = { /* do something */ROUTE_PROFILE }) {
+                            IconButton(onClick = { /* do something */navController.navigate(ROUTE_PROFILE) }) {
                                 Icon(
                                     Icons.Filled.AccountCircle,
                                     contentDescription = "Localized description",

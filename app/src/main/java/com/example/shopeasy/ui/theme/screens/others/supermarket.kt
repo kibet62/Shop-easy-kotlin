@@ -12,12 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.shopeasy.R
 
 
 @Composable
-fun supermarket() {
+fun supermarket(navController: NavHostController) {
     val uri1 = "https://www.jumia.co.ke/catalog/?q=supermarket"
     val uri2 = "https://jiji.co.ke/search?query=supermarket"
     val uri3 = "https://www.alibaba.com/trade/search?spm=a2700.galleryofferlist.pageModule_fy23_pc_search_bar.keydown__Enter&tab=all&searchText=supermarket"
@@ -43,4 +46,10 @@ fun supermarket() {
 
     }
 
+}
+
+@Preview
+@Composable
+fun supermarketprev() {
+    supermarket(rememberNavController())
 }
